@@ -38,6 +38,16 @@ const teamMembers = [
 ];
 
 //definizione della fuinzione che mi genera la struttura delle card
+const renderCards = () => {
+
+  for (let i = 0; i < teamMembers.length; i++) {
+
+    let card = generateCard(teamMembers[i]);
+
+    teamContainer.innerHTML += card;
+
+  }
+}
 const generateCard = (member) => {
 
   const { name, role, email, img } = member;
@@ -64,11 +74,6 @@ const generateCard = (member) => {
 }
 
 const teamContainer = document.getElementById('team-members');
+const addButton = document.getElementById('add-member');
 
-for (let i = 0; i < teamMembers.length; i++) {
-
-  let card = generateCard(teamMembers[i]);
-
-  teamContainer.innerHTML += card;
-
-}
+renderCards();
