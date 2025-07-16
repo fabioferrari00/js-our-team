@@ -76,4 +76,39 @@ const generateCard = (member) => {
 const teamContainer = document.getElementById('team-members');
 const addButton = document.getElementById('add-member');
 
+
 renderCards();
+addButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  teamContainer.innerHTML = '';
+
+  const name = document.getElementById('name').value;
+  const role = document.getElementById('role').value;
+  const email = document.getElementById('email').value;
+  const image = document.getElementById('image').value;
+
+  //verifico la consistenza dei dati
+  if (name == '' || role == '' || image == '' || email == '') {
+    alert('Tutti i campi sono obbligatori');
+    return;
+  }
+
+  const newMember = {
+    name,
+    role,
+    email,
+    image
+  }
+
+  //pusho il nuovo oggetto nell'array
+  teamMembers.push(newMember);
+
+  //svuoto i campi della form
+  document.getElementById('name').value = '';
+  document.getElementById('role').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('image').value = '';
+
+  console.log(teamMembers);
+  renderCards();
+})
