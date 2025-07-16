@@ -39,6 +39,7 @@ const teamMembers = [
 
 //definizione della fuinzione che mi genera la struttura delle card
 const renderCards = () => {
+  teamContainer.innerHTML = '';
 
   for (let i = 0; i < teamMembers.length; i++) {
 
@@ -61,9 +62,9 @@ const generateCard = (member) => {
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title text-light" id="name">${name}</h5>
-                <p class="card-text text-light" id="role">${role}</p>
-                <p class="card-text text-primary" id="email">${email}</p>
+                <h5 class="card-title text-light">${name}</h5>
+                <p class="card-text text-light">${role}</p>
+                <p class="card-text text-primary">${email}</p>
               </div>
             </div>
           </div>
@@ -80,7 +81,7 @@ const addButton = document.getElementById('add-member');
 renderCards();
 addButton.addEventListener('click', (e) => {
   e.preventDefault();
-  teamContainer.innerHTML = '';
+  // teamContainer.innerHTML = '';
 
   const name = document.getElementById('name').value;
   const role = document.getElementById('role').value;
@@ -99,6 +100,8 @@ addButton.addEventListener('click', (e) => {
     email,
     image
   }
+
+  console.log(document.getElementById('name'), document.getElementById('role'), document.getElementById('email'), document.getElementById('image'));
 
   //pusho il nuovo oggetto nell'array
   teamMembers.push(newMember);
